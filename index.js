@@ -1,10 +1,10 @@
-const express = require('express')
-const app = express()
-const port = 3000
+const express = require('express');
+const app = express();
+const port = 3000; 
 const unzipper = require('unzipper');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 
-var jsonParser = bodyParser.json()
+var jsonParser = bodyParser.json();
 
 app.post('/mail', jsonParser, function (req, res) {
 
