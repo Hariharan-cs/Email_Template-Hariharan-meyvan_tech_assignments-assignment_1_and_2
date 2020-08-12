@@ -12,12 +12,12 @@ app.post('/mail', jsonParser, function (req, res) {
   var data = fs.readFileSync('htmlTemplate.txt', 'utf8');
   var htmlString = data.toString(); 
 
-  const SENDGRID_API_KEY = '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';
+  const API_KEY = req.body.apikey.toString();
 
   var emailId = req.body.email.toString();  
   console.log('emailId',emailId);
   const sgMail = require('@sendgrid/mail');
-  sgMail.setApiKey(SENDGRID_API_KEY); 
+  sgMail.setApiKey(API_KEY); 
   const msg = {
     to: emailId,
     from: 'hariharan.devacc@gmail.com',

