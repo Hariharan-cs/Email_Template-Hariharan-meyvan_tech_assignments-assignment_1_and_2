@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000; 
+const port = 3000;
 const unzipper = require('unzipper');
 var bodyParser = require('body-parser');
 
@@ -8,19 +8,13 @@ var jsonParser = bodyParser.json();
 
 app.post('/mail', jsonParser, function (req, res) {
 
-  var fs = require('fs');
-  var data = fs.readFileSync('htmlTemplate.txt', 'utf8');
-  var htmlString = data.toString(); 
-
-  const API_KEY = req.body.apikey.toString();
-
-  var emailId = req.body.email.toString();  
-  console.log('emailId',emailId);
+  var fs = require('fs'), data = fs.readFileSync('htmlTemplate.txt', 'utf8'), htmlString = data.toString(), API_KEY = req.body.apikey.toString(), emailId = req.body.email.toString(), fromEmailId = req.body.fromEmailId.toString();
+  //console.log(' req.body', req.body);
   const sgMail = require('@sendgrid/mail');
-  sgMail.setApiKey(API_KEY); 
+  sgMail.setApiKey(API_KEY);
   const msg = {
     to: emailId,
-    from: 'hariharan.devacc@gmail.com',
+    from: fromEmailId,
     subject: 'Testing Email template Generation',
     text: 'The stack which is used (node.js) Library express, body parser, unzipper',
     html: htmlString,
@@ -48,11 +42,11 @@ app.get('/crackPassword', (req, res, next) => {
         key = `${characters[i] ? characters[i] : ''}${characters[j++]}`;
         if (j == charactersLength) {
           i++;
-          j = 0; 
+          j = 0;
         }
         if (i == charactersLength)
-          break; 
-  
+          break;
+
         const directory = await unzipper.Open.file('./assignment.zip');
         const extracted = await directory.files[0].buffer(`Twg48wTM${key}`);
         //console.log('String',extracted.toString());
@@ -66,7 +60,7 @@ app.get('/crackPassword', (req, res, next) => {
       result = e;
       res.send(result);
     }
-  })(); 
+  })();
 })
 
 app.listen(port, () => {
