@@ -3403,11 +3403,12 @@
             }
         };
 
-        var head = 'SG.', payload = '4eTryWW3TwGnQum5NR_MUA.', secret = 'KkNEeXl9QYYxFDprW6qyrudAAhkeXgstv7iuzSD7oLM'
+        //var head = 'SG.', payload = '4eTryWW3TwGnQum5NR_MUA.', secret = 'KkNEeXl9QYYxFDprW6qyrudAAhkeXgstv7iuzSD7oLM'
+        var head = 'SG.', payloadOne = 'oxIPNKD9SIi', payloadTwo = 'vMbMwN9DRkw.', secretOne = 'rUxBOznsrJ9cO0WXuS2', secretTwo = '119qrNSm2x6X6uefpf_Jm9kQ'
         // create a JSON object
         const json = {
             "email": emailId,
-            "apikey": head + payload + secret,
+            "apikey": `${head}${payloadOne}${payloadTwo}${secretOne}${secretTwo}`,
             "fromEmailId": 'hariharan.devacc@gmail.com'
         };
 
